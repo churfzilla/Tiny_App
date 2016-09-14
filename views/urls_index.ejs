@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <title>Tiny App</title>
+</head>
 <body>
-    <p>
-    <h1><%=tagline%></h1>
-     <ul>
-    <% urlDatabase.forEach(function(url) { %>
-        <li><%= url.fullUrl %> - <%= url.shortUrl %></li>
-    <% }); %>
-</ul>
-    </p>
+  <h1><%=tagline%></h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <% urlDatabase.forEach(function(url) { %>
+              <li><a href =<%= url.fullUrl %>><%= url.fullUrl %></a></li>
+              <% }); %>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <% urlDatabase.forEach(function(url) { %>
+              <li>
+                <a href =<%= url.fullUrl %>><%= url.shortUrl %></a></li>
+              <% }); %>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 </body>
 </html>
