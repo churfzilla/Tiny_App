@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <p>
+    <h1><%=tagline%></h1>
+     <ul>
+    <% urlDatabase.forEach(function(url) { %>
+        <li><%= url.shortUrl %> - <%= url.fullUrl %></li>
+    <% }); %>
+</ul>
+    </p>
+</body>
+</html>

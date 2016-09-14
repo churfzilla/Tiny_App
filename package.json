@@ -2,14 +2,24 @@
   "name": "tiny_app",
   "version": "1.0.0",
   "description": "url shortener",
-  "main": "index.js",
+  "main": "express_server.js",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "nodemon": "^1.10.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chad Bruhaug",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/churfzilla/Tiny_App.git"
+  },
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.14.0",
-    "nodemon": "^1.10.2"
-  }
+  "bugs": {
+    "url": "https://github.com/churfzilla/Tiny_App/issues"
+  },
+  "homepage": "https://github.com/churfzilla/Tiny_App#readme"
 }
