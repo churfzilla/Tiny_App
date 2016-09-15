@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <header>
  <% include ./partials/_header %>
 </header>
-
 <body>
+  <div>
  <% for (url in urls) { %>
-   <%= url %> - <%= urls[url] %>
-   <a href='/urls/<%= url %>'><button type="submit">Edit</button></a>
-   <form method='POST' action='/urls/<%= url %>?_method=DELETE'>
-     <button type="submit">Delete</button>
-   </form>
+    <table>
+      <tbody>
+        <tr>
+          <td>Tiny URL:<a href="<%= urls[url] %>" style="text-decoration:none"</a><%= url %></td>
+          <td><a href="<%= urls[url] %>" style="text-decoration:none"</a><%= urls[url] %></td>
+          <td><a href='/urls/<%= url %>'><button type="submit">Edit</button></a></td>
+          <td><form method='POST' action='/urls/<%= url %>?_method=DELETE'><button type="submit">Delete</button></form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
  <% }; %>
 </body>
 </html>
-
-<!-- <form method="POST" action="/urls/9sm5xK?_method=DELETE">...</form> -->
