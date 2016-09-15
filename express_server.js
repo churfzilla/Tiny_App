@@ -5,6 +5,14 @@ const PORT = process.env.PORT || 8080; // default port 8080
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Generates a random string of 6 characters - when using insure it checks if string exists
+function generateRandomString(){
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for( var i=0; i < 6; i++ )
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
 
 app.listen(PORT, () => {
   console.log(`Tiny app listening on port ${PORT}!`);
