@@ -4,7 +4,9 @@ app.set("view engine", "ejs");
 const PORT = process.env.PORT || 8080; // default port 8080
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 //Generates a random string of 6 characters - when using insure it checks if string exists
 function generateRandomString(){
   var text = "";
