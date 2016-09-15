@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <p>
-   <% include partials/_header %>
-     <ul>
-    <% urlDatabase.forEach(function(url) { %>
-        <li><%= url.shortUrl %></li>
-    <% }); %>
-</ul>
-    </p>
+  <% include ./partials/_header %>
+  <p>
+    <ul>
+      <li><%for(var key in shortURL){%>
+        <%=shortURL[key]%>
+        <%}%>
+      </li>
+    </ul>
+  </p>
 </body>
 </html>
