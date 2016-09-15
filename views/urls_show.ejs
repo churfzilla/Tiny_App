@@ -5,8 +5,8 @@
   <% include ./partials/_header %>
 </header>
 <body>
-  <form method='POST' action='/urls/<%= id %>?_method=PUT'>
-    <input type='text' value='<%= longURL %>' name='url'></input>
+  <form  method='POST' action='/urls/<%= id %>?_method=PUT'>
+    <input style="width: 300px" type='text' value='<%= longURL %>' name='url'></input>
      <button type="submit">Update</button>
    </form>
  </body>
