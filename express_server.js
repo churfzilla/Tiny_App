@@ -12,48 +12,37 @@ function generateRandomString(){
   for( var i=0; i < 6; i++ )
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   return text;
-}
+};
 
 var urlDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com"
 };
 
-app.listen(PORT, () => {
-  console.log(`Tiny app listening on port ${PORT}!`);
-});
 //INDEX PAGE
 app.get("/urls", (req, res) => {
   let templateVars = { urls: urlDatabase };
   res.render("urls_index", templateVars);
 });
-//SHOW PAGE
-app.get("/urls/:id", (req, res) => {
-  let templateVars = { shortURL: req.params.id };
-  res.render("urls_show", templateVars);
-});
+
 //NEW URL PAGE
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
+
 //POSTING FORM
 app.post("/urls", (req, res) => {
   console.log(req.body);  // debug statement to see POST parameters
   res.send("Ok");         // Respond with 'Ok' (we will replace this)
 });
 
+//SHOW PAGE
+app.get("/urls/:id", (req, res) => {
+  let templateVars = { shortURL: req.params.id };
+  res.render("urls_show", templateVars);
+});
 
-// app.get("/urls/:id", (req, res) => {
-//   let templateVars = { shortURL: req.params.id };
-//   res.render("urls_show", templateVars);
-// });
-
-// var urlDatabase = {
-// "b2xVn2": "http://www.lighthouselabs.ca",
-// "9sm5xK": "http://www.google.com"
-// };
-
-// app.get("/urls", (req, res) => {
-//   let templateVars = { urls: urlDatabase };
-//   res.render("urls_index", templateVars);
-// });
+//Tells console what port it is listening on
+app.listen(PORT, () => {
+  console.log(`Tiny app listening on port ${PORT}!`);
+});
