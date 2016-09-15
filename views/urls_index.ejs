@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<header>
+ <% include ./partials/_header %>
+</header>
+
 <body>
-  <% include ./partials/_header %>
-   <p>
-    <ul>
-      <li><% for (var key in urls) { %>
-        <%=urls[key]%>
-        <% } %>
-      </li>
-    </ul>
-</p>
+ <% for (url in urls) { %>
+   <%= url %> - <%= urls[url] %>
+   <a href='/urls/<%= url %>'>Edit</a>
+   <form method='POST' action='/urls/<%= url %>?_method=DELETE'>
+     <button type="submit">Delete</button>
+   </form>
+ <% }; %>
 </body>
 </html>

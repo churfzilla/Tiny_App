@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
+
+<header>
   <% include ./partials/_header %>
-  <p>
-    <ul>
-      <li>
-        <%for(var key in shortURL){%>
-        <%=shortURL[key]%>
-        <%}%>
-      </li>
-    </ul>
-  </p>
-</body>
-</html>
+</header>
+<body>
+  <form method='POST' action='/urls/<%= id %>?_method=PUT'>
+    <input type='text' value='<%= longURL %>' name='url'></input>
+     <button type="submit">Update</button>
+   </form>
+ </body>
+ </html>
