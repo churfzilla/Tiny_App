@@ -14,27 +14,35 @@ function generateRandomString(){
   return text;
 }
 
+var urlDatabase = {
+  "b2xVn2": "http://www.lighthouselabs.ca",
+  "9sm5xK": "http://www.google.com"
+};
+
 app.listen(PORT, () => {
   console.log(`Tiny app listening on port ${PORT}!`);
 });
-app.get('/urls', (req, res) => {
-    var urlDatabase = [
-        { shortUrl: "b2xVn2", fullUrl: "http://www.lighthouselabs.ca" },
-        { shortUrl: "9sm5xK", fullUrl: "http://www.google.com" }
-    ];
-    res.render('urls_index', {
-        urlDatabase: urlDatabase,
-    });
+//INDEX PAGE
+app.get("/urls", (req, res) => {
+  let templateVars = { urls: urlDatabase };
+  res.render("urls_index", templateVars);
 });
-
+//SHOW PAGE
+app.get("/urls/:id", (req, res) => {
+  let templateVars = { shortURL: req.params.id };
+  res.render("urls_show", templateVars);
+});
+//NEW URL PAGE
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
-
+//POSTING FORM
 app.post("/urls", (req, res) => {
   console.log(req.body);  // debug statement to see POST parameters
   res.send("Ok");         // Respond with 'Ok' (we will replace this)
 });
+
+
 // app.get("/urls/:id", (req, res) => {
 //   let templateVars = { shortURL: req.params.id };
 //   res.render("urls_show", templateVars);

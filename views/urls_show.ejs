@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <p>
+   <% include partials/_header %>
+     <ul>
+    <% urlDatabase.forEach(function(url) { %>
+        <li><%= url.shortUrl %></li>
+    <% }); %>
+</ul>
+    </p>
+</body>
+</html>
