@@ -1,11 +1,36 @@
 const express = require("express");
 const app = express();
-app.set("view engine", "ejs");
 const PORT = process.env.PORT || 8080; // default port 8080
 const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-var methodOverride = require('method-override');
+const methodOverride = require('method-override');
+const MongoClient = require("mongodb").MongoClient;
+const MONGODB_URI = "mongodb://127.0.0.1:27017/url_shortener";
+
 app.use(methodOverride('_method'));
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: false }));
+
+require('./routes/urls')(app, db);
+require('./routes/u')(app, db);
+
+"use strict";
+
+console.log(`Connecting to MongoDB running at: ${MONGODB_URI}`);
+
+MongoClient.connect(MONGODB_URI, (err, db) => {
+  if (err) {
+    console.log('Could not connect! Unexpected error. Details below.');
+    throw err;
+  }
+  console.log('Connected to the database!');
+  let collection = db.collection("urls");
+  console.log('Retreiving documents for the "test" collection...');
+  collection.find().toArray((err, results) => {
+    console.log('results: ', results);
+    console.log('Disconnecting from Mongo!');
+    db.close();
+  });
+});
 
 //Generates a random string of 6 characters - when using insure it checks if string exists
 function generateRandomString(){
