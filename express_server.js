@@ -1,5 +1,4 @@
 'use strict';
-require('dotenv').config();
 //Required npm packages --------------------------------------------------
 const express = require('express');
 const app = express();
