@@ -21,7 +21,6 @@ module.exports = function(app, db) {
   app.get('/urls', (req, res) => {
     tAppFunc.getURLs(db, (err, URLs) => {
       let templateVars = {
-        title: 'Tiny URLs',
         urls: URLs
       };
       res.render('urls_index', templateVars);
@@ -32,7 +31,6 @@ module.exports = function(app, db) {
     let shortURL = req.params.id;
     tAppFunc.getLongURL(db, shortURL, (err, longURL) => {
       let templateVars = {
-        title: `Details for ${shortURL}`,
         shortURL: shortURL,
         longURL: longURL
       };

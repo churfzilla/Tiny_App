@@ -1,7 +1,8 @@
 'use strict';
 
 const tAppFunc = require('./function_index');
-//Forces the http:// if not present
+//Forces the http:// if not present - renders a 404 if not found
+//matches short url to long
 //export function
 module.exports = function(app, db) {
   app.get('/u/:shortURL', (req, res) => {
