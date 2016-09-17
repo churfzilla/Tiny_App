@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080; // default port 8080
@@ -13,7 +15,7 @@ app.listen(PORT, () => {
  console.log(`Example app listening on port ${PORT}!`);
 });
 
-"use strict";
+
 
 //Generates a random string of 6 characters - when using insure it checks if string exists
 function generateRandomString(){
@@ -83,11 +85,15 @@ function getURLs(db, cb) {
   });
 }
 
+let dbInstance;
+
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.log('Could not connect! Unexpected error. Details below.');
     throw err;
   }
+
+  dbInstance = db;
 
   app.get("/urls/new", (req, res) => {
    res.render("urls_new");
@@ -136,10 +142,16 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   app.get("/u/:shortURL", (req, res) => {
     let shortURL = req.params.shortURL;
     getLongURL(db, shortURL, (err, longURL) => {
-      if (longURL === undefined) {
-        let templateVars = { shortURL: shortURL};
-        res.status(404).render('404_page_not_found', templateVars);
+      if (err === '404_Page_not_found') {
+        let templateVars = {
+          title: 'Not Found!',
+          shortURL: shortURL
+        };
+        res.status(404).render('404_Page_not_found', templateVars);
       } else {
+        if(longURL.indexOf('http://') === -1) {
+          longURL = 'http://' + longURL;
+        }
         res.status(301).redirect(longURL);
       }
     });
