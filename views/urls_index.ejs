@@ -5,14 +5,22 @@
 </header>
 <body>
   <div>
- <% for (url in urls) { %>
+  <% for (url in urls) { %>
     <table>
       <tbody>
         <tr>
-          <td><% include ./partials/_host %><a href="<%= urls[url] %>" style="text-decoration:none"</a><%= url %></td>
-          <td><a href="<%= urls[url] %>" style="text-decoration:none"</a><%= urls[url] %></td>
-          <td><a href='/urls/<%= url %>'><button type="submit">Edit</button></a></td>
-          <td><form method='POST' action='/urls/<%= url %>?_method=DELETE' ><button onclick="return confirm('are you sure?')" type="submit" >Delete</button></form>
+          <td>
+          <% include ./partials/_host %><a href="<%= urls[url].longURL %>" style="text-decoration:none" ><%= urls[url].shortURL %></a>
+          </td>
+          <td>
+          <a href="<%= urls[url].longURL %>" style="text-decoration:none"><%= urls[url].longURL %></a>
+          </td>
+          <td>
+          <a href='/urls/<%= urls[url].shortURL %>'><button type="submit">Edit</button></a>
+          </td>
+          <td>
+            <form method='POST' action='/urls/<%= urls[url].shortURL %>?_method=DELETE' ><button onclick="return confirm('are you sure?')" type="submit" >Delete</button>
+            </form>
           </td>
         </tr>
       </tbody>
