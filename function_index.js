@@ -19,8 +19,7 @@ exports.insertURL = function(db, longURL, cb) {
 exports.updateURL = function(db, shortURL, longURL, cb) {
   db.collection('urls').updateOne(
     { 'shortURL': shortURL },
-    {
-      $set: { 'longURL': longURL }
+    {$set: { 'longURL': longURL }
     }, (err, result) => {
       if (err) {
         return cb(err);
@@ -45,7 +44,7 @@ exports.getLongURL = function(db, shortURL, cb) {
       return cb(err);
     }
     if (result === null) {
-      return cb('not_found', undefined);
+      return cb('404', undefined);
     } else {
       return cb(null, result.longURL);
     }

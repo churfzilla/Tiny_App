@@ -26,7 +26,7 @@ module.exports = function(app, db) {
       res.render('urls_index', templateVars);
     });
   });
-//GETs the short URL to redirct to the long URL link -----------------------------
+//GETs the short URL to redirct to the Edit page -----------------------------
   app.get('/urls/:id', (req, res) => {
     let shortURL = req.params.id;
     tAppFunc.getLongURL(db, shortURL, (err, longURL) => {
