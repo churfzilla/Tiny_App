@@ -1,5 +1,5 @@
 'use strict';
-const tAppFunc = require('../function_index');
+const tAppFunc = require('./function_index');
 //Renders the creation/new URL form page -------------------------------------
 module.exports = function(app, db) {
   app.get('/urls/new', (req, res) => {
