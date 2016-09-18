@@ -6,7 +6,7 @@
   <title>Tiny_app Index</title>
   <meta name="description" content="MinimalCSS is a simple HTML / CSS template that is incredibly easy to customize. It can be downloaded and used with no limitations or obligations.">
 
-  <link href="./minimal.css" rel="stylesheet">
+  <link href="../minimal.css" rel="stylesheet">
 </head>
 
 <body class="body">
@@ -14,6 +14,15 @@
     <header class="header">
       <% include ./partials/_header %>
     </header>
+    <p>
+      <nav class="nav ul">
+      <form action="/urls" method="POST" >
+        <label class="body" for="longURL">Enter a URL:</label>
+        <input class="body" type="text" name="longURL" placeholder="http://" style="width: 600px; height: 25px">
+        <input class="myButton" type="submit" value="Submit">
+      </form>
+      </nav>
+    </p>
   <% for (url in urls) { %>
     <table class="table">
       <tbody>

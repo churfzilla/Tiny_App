@@ -6,12 +6,14 @@
   <title>Tiny_app Creator</title>
   <meta name="description" content="MinimalCSS is a simple HTML / CSS template that is incredibly easy to customize. It can be downloaded and used with no limitations or obligations.">
 
-  <link href="./minimal.css" rel="stylesheet">
+  <link href="../minimal.css" rel="stylesheet">
 </head>
 
   <body class="body">
     <div class="container">
+    <header class="header">
       <% include partials/_header %>
+    </header>
       <form action="/urls" method="POST" >
         <label for="longURL">Enter a URL:</label>
         <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
