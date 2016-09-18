@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Tiny_app Index</title>
   <meta name="description" content="MinimalCSS is a simple HTML / CSS template that is incredibly easy to customize. It can be downloaded and used with no limitations or obligations.">
-
   <link href="../minimal.css" rel="stylesheet">
+
 </head>
 
 <body class="body">
@@ -15,27 +16,24 @@
       <% include ./partials/_header %>
     </header>
     <p>
-      <nav class="nav ul">
       <form action="/urls" method="POST" >
         <label class="body" for="longURL">Enter a URL:</label>
         <input class="body" type="text" name="longURL" placeholder="http://" style="width: 600px; height: 25px">
         <input class="myButton" type="submit" value="Submit">
       </form>
-      </nav>
     </p>
   <% for (url in urls) { %>
     <table class="table">
       <tbody>
         <tr>
           <td style="width: 300px">
-
-          <a href="http://localhost:8080/u/<%= urls[url].shortURL %>" style="text-decoration:none" ><%= urls[url].shortURL %></a>
+            <a href="http://localhost:8080/u/<%= urls[url].shortURL %>"><%= urls[url].shortURL %></a>
           </td>
           <td style="width: 300px">
-          <a href="<%= urls[url].longURL %>" style="text-decoration:none"><%= urls[url].longURL %></a>
+            <a href="<%= urls[url].longURL %>"><%= urls[url].longURL %></a>
           </td>
           <td style="width: 50px">
-          <a href='/urls/<%= urls[url].shortURL %>'><button class="myButton" type="submit">Edit</button></a>
+            <a href='/urls/<%= urls[url].shortURL %>'><button class="myButton" type="submit">Edit</button></a>
           </td>
           <td style="width: 50px">
             <form method='POST' action='/urls/<%= urls[url].shortURL %>?_method=DELETE' ><button class="myButton" onclick="return confirm('Are you sure?')" type="submit" >Delete</button>
