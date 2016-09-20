@@ -59,4 +59,3 @@ exports.getURLs = function(db, cb) {
     return cb(null, result);
   });
 }
-debugger;

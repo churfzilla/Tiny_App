@@ -17,6 +17,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 let db;
+
 //Initializing MongoDb Connection ------------------------------------------
 MongoClient.connect(MONGODB_URI, (err, dbInstance) => {
   if (err) {
