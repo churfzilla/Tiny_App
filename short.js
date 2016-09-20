@@ -10,7 +10,7 @@ module.exports = function(app, db) {
     tAppFunc.getLongURL(db, shortURL, (err, longURL) => {
       if (err === '404') {
         let templateVars = {
-          title: 'Not Found!',
+          title: '404 Not Found!',
           shortURL: shortURL
         };
         res.status(404).render('404', templateVars);
